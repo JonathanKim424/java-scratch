@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.comboxdemo.VendorAddController">
+    <children>
+        <Button layoutX="40.0" layoutY="30.0" mnemonicParsing="false" onAction="#switchToHome" text="Home" />
+        <Button layoutX="40.0" layoutY="70.0" mnemonicParsing="false" onAction="#switchToVendor" text="Vendor" />
+        <Button layoutX="40.0" layoutY="110.0" mnemonicParsing="false" onAction="#switchToInvoice" text="Invoice" />
+      <Label layoutX="170.0" layoutY="60.0" text="Vendor Name" />
+      <Label layoutX="170.0" layoutY="120.0" text="Vendor Phone" />
+      <Label layoutX="170.0" layoutY="180.0" text="Vendor Address" />
+      <Button layoutX="400.0" layoutY="350.0" mnemonicParsing="false" onAction="#add" text="Add" />
+      <Button layoutX="500.0" layoutY="350.0" mnemonicParsing="false" onAction="#switchToVendor" text="Back" />
+      <TextField fx:id="vendorName" layoutX="170.0" layoutY="80.0" />
+      <TextField fx:id="vendorPhone" layoutX="170.0" layoutY="140.0" />
+      <TextField fx:id="vendorAddress" layoutX="170.0" layoutY="200.0" />
+      <Label fx:id="statusText" layoutX="400.0" layoutY="100.0" />
+    </children>
+</AnchorPane>
