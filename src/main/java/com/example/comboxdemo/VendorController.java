@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 import java.sql.*;
 
 import java.io.IOException;
@@ -56,9 +58,11 @@ public class VendorController {
     private Connection connect = null;
     private Statement statement = null;
     private ResultSet resultSet = null;
+
+    Dotenv dotenv = Dotenv.load();
     public void initialize() throws Exception {
         try {
-            connect = DriverManager.getConnection("jdbc:mysql://localhost/javademo?" + "user=?&password=?");
+            connect = DriverManager.getConnection(String.format("jdbc:mysql://localhost/%s?" + "user=%s&password=%s",dotenv.get("DB_NAME"),dotenv.get("DB_USER"),dotenv.get("DB_PW")));
             statement = connect.createStatement();
             resultSet = statement.executeQuery("SELECT * FROM vendors");
             while (resultSet.next()) {

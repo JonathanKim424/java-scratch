@@ -1,5 +1,6 @@
 package com.example.comboxdemo;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +13,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.sql.*;
+
+import io.github.cdimascio.dotenv.Dotenv;
 
 import java.io.IOException;
 
@@ -59,12 +62,13 @@ public class VendorAddController {
     private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
 
+    Dotenv dotenv = Dotenv.load();
     public void add(ActionEvent e) throws SQLException {
         String newVendorName = vendorName.getText();
         String newVendorPhone = vendorPhone.getText();
         String newVendorAddress = vendorAddress.getText();
         try {
-            connect = DriverManager.getConnection("jdbc:mysql://localhost/javademo?" + "user=?&password=?");
+            connect = DriverManager.getConnection(String.format("jdbc:mysql://localhost/%s?" + "user=%s&password=%s",dotenv.get("DB_NAME"),dotenv.get("DB_USER"),dotenv.get("DB_PW")));
             preparedStatement = connect.prepareStatement("INSERT INTO vendors VALUES (default,?,?,?)");
             preparedStatement.setString(1, newVendorName);
             preparedStatement.setString(2, newVendorPhone);

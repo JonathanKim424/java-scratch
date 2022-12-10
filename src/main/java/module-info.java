@@ -4,6 +4,7 @@ module com.example.comboxdemo {
 
     requires org.controlsfx.controls;
     requires java.sql;
+    requires io.github.cdimascio.dotenv.java;
 
     opens com.example.comboxdemo to javafx.fxml;
     exports com.example.comboxdemo;
