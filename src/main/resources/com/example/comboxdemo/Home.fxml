@@ -15,5 +15,6 @@
             <Font size="24.0" />
          </font>
       </Label>
+      <Button layoutX="40.0" layoutY="330.0" mnemonicParsing="false" onAction="#switchToSetup" text="Setup" />
    </children>
 </AnchorPane>
