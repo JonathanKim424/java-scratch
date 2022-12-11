@@ -49,6 +49,9 @@ public class SetupController {
     Dotenv dotenv = Dotenv.load();
     public void resetDB(ActionEvent event) throws FileNotFoundException, SQLException {
         try {
+            System.out.println(dotenv.get("DB_NAME"));
+            System.out.println(dotenv.get("DB_USER"));
+            System.out.println(dotenv.get("DB_PW"));
             connect = DriverManager.getConnection(String.format("jdbc:mysql://localhost/%s?" + "user=%s&password=%s",dotenv.get("DB_NAME"),dotenv.get("DB_USER"),dotenv.get("DB_PW")));
             System.out.println("Connection established...");
             ScriptRunner sr = new ScriptRunner(connect);
